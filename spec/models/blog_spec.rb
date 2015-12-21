@@ -8,17 +8,17 @@ RSpec.describe Blog, type: :model do
   end
 
   it 'requires a description' do 
-  	blog = Blog.ew(description: '')
+  	blog = Blog.new(description: '')
   	blog.valid?
   	expect(blog.errors[:description].any?).to eq(true)
   end
 
   describe 'relationships' do 
-  	before do 
-  		@user1 = User.create(firstname: 'Kobe', last_name: 'Bryant', email_address: 'kobe@lakers.com')
-			@user2 = User.create(first_name: 'Julius', last_name: 'Randle', email_Address: 'julius@lakers.com')
-			@blog = Blog.create(name: 'A Blog', description: 'This is a blog')
-		end
+  	before do
+      @user1 = User.create(first_name: 'Kobe', last_name: 'Bryant', email_address: 'kobe@lakers.com')
+      @user2 = User.create(first_name: 'Julius', last_name: 'Randle', email_address: 'julius@lakers.com')
+      @blog = Blog.create(name: 'A blog', description: 'This is a blog')
+    end
 
 		it 'has many posts' do 
 			post1 = @blog.posts.create(user: @user1, title: 'Coolio', content: 'Cool beans')
