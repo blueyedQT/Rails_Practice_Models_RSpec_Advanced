@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
 
 	it 'rejects improperly formatted email address' do 
 		emails = ['kobe@lakers', 'kobe.com']
-		eamils.each do |email|
+		emails.each do |email|
 			user = User.new(email_address: email)
 			user.valid?
 			expect(user.errors[:email_address].any?).to eq(true)
