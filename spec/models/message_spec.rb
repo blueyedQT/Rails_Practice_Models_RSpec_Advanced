@@ -29,5 +29,13 @@ RSpec.describe Message, type: :model do
 			message = @user.messages.create(post: @post, author: 'Jackson', message: 'Goinks')
 			expect(message.user).to eq(@user)
 		end
+
+		it 'has many comments' do 
+			message = @user.messages.create(post: @post, author: 'Jackson', message: 'Goinks')
+			comment1 = message.comments.create(comment: 'Comment 1')
+			comment2 = message.comments.create(comment: 'Comment 2')
+			expect(message.comments).to include(comment1)
+			expect(message.comments).to include(comment2)
+		end
 	end
 end

@@ -73,5 +73,12 @@ RSpec.describe User, type: :model do
 			expect(@user.blogs).to include(blog1)
 			expect(@user.blogs).to include(blog2)
 		end
+
+		it 'has many comments' do 
+			comment1 = @user.comments.create(comment: 'Comment 1')
+			comment2 = @user.comments.create(comment: 'Comment 2')
+			expect(@user.comments).to include(comment1)
+			expect(@user.comments).to include(comment2)
+		end
 	end
 end
